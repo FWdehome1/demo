@@ -9,6 +9,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Random;
 
 @Component
@@ -21,19 +22,21 @@ public class ScheduledTest {
 
     //每30秒执行一次
     @Scheduled(cron = "0/30 * * * * ? ")
-    @SchedulerLock(name = "test", lockAtMostForString = "PT40S", lockAtLeastForString = "PT40S")
+    @SchedulerLock(name = "test", lockAtMostForString = "PT10S", lockAtLeastForString = "PT10S")
     public void test() {
-        logger.info("第一个定时任务开始执行");
+        LocalDateTime localDateTime=LocalDateTime.now();
+        logger.info("第一个定时任务开始执行 当前时间"+localDateTime);
         System.out.println("定时任务");
     }
 
 
     //往数据库里插数据
     @Scheduled(cron = "0 */1 * * * *")
-    @SchedulerLock(name = "test2", lockAtMostForString = "PT40S", lockAtLeastForString = "PT40S")
+    @SchedulerLock(name = "test2", lockAtMostForString = "PT10S", lockAtLeastForString = "PT10S")
     public void test2() {
 
-        logger.info("第二定时任务开始执行");
+        LocalDateTime localDateTime=LocalDateTime.now();
+        logger.info("第二定时任务开始执行当前时间"+localDateTime);
         Student student=new Student();
 
         Random rand = new Random();
