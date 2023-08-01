@@ -16,7 +16,7 @@ import java.util.UUID;
 /**
  * @author fanwang
  */
-@Slf4j
+
 @RestController
 @RequestMapping("home/test")
 public class RabbitMqController {
