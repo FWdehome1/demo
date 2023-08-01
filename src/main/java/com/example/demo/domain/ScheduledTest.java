@@ -21,8 +21,8 @@ public class ScheduledTest {
     Logger logger= LoggerFactory.getLogger(ScheduledTest.class);
 
     //每30秒执行一次
-    @Scheduled(cron = "0/30 * * * * ? ")
-    @SchedulerLock(name = "test", lockAtMostForString = "PT10S", lockAtLeastForString = "PT10S")
+    //@Scheduled(cron = "0/30 * * * * ? ")
+    //@SchedulerLock(name = "test", lockAtMostForString = "PT10S", lockAtLeastForString = "PT10S")
     public void test() {
         LocalDateTime localDateTime=LocalDateTime.now();
         logger.info("第一个定时任务开始执行 当前时间"+localDateTime);
@@ -31,8 +31,8 @@ public class ScheduledTest {
 
 
     //往数据库里插数据
-    @Scheduled(cron = "0 */1 * * * *")
-    @SchedulerLock(name = "test2", lockAtMostForString = "PT10S", lockAtLeastForString = "PT10S")
+    //@Scheduled(cron = "0 */1 * * * *")
+   // @SchedulerLock(name = "test2", lockAtMostForString = "PT10S", lockAtLeastForString = "PT10S")
     public void test2() {
 
         LocalDateTime localDateTime=LocalDateTime.now();
